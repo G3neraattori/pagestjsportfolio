@@ -1,0 +1,131 @@
+html{
+    position: relative;
+    min-height: 100%;
+    margin: 0;
+
+}
+body{
+    height: 100%;
+    margin: 0 0 51px;
+    padding: 0;
+    background-image: linear-gradient(-135deg, indianred, purple, rebeccapurple, darkblue);
+
+}
+main{
+    position:absolute;
+    bottom:60px;
+    top: 0;
+    min-width: 100%;
+}
+#desktop{
+    height: 100%;
+
+}
+
+
+#gitPortfolio{
+    margin: 1px ;
+    border-radius: 10px;
+    border: 2px solid gray;
+    background-color: whitesmoke;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#browserBar{
+    border-radius: 6px 6px 0 0;
+    border: 1px solid gray;
+    background-color: gray;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+
+
+}
+
+#closeButton{
+    height: 12px;
+    width: 12px;
+    margin: 2px 0 0;
+    border-radius: 50%;
+    border: 2px darkred;
+}
+
+#browserText{
+    margin: 0;
+}
+
+
+
+
+
+/* FOOTER AKA TASKBAR CSS. px can be used since the page can't be scaled*/
+.footer{
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    height: 40px; /* Set the fixed height of the footer here */
+    line-height: 27px; /* Vertically center the text there */
+    display: flex;
+    justify-content: center;
+}
+
+#taskbar {
+    position: absolute;
+    min-width: 10%;
+    height: 40px;
+    display: flex;
+    justify-content: space-around;
+    border-radius: 10px;
+    padding-left: 2px;
+    padding-right: 2px;
+    background: rgba(245,245,245, 0.5);
+
+}
+
+
+
+#portfolioContent{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    overflow: auto;
+}
+
+.gitContainer{
+    height: 105px;
+    width: 180px;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5%;
+    border: 1px solid gray;
+
+}
+
+
+
+
+
+
+
+
+
+
+/*TODO Remove this and fix the taskbar sizing to dynamic*/
+#task-content {
+    margin: 0;
+    display: block;
+}
+
+#menuButton, #gitButton, #meButton{
+    height: 30px;
+    width: 30px;
+    margin: 0;
+    border-radius: 25%;
+    display: inline-block;
+    border: none;
+    box-shadow: -2px 1px rgba(100,100,100, 0.2);
+}
