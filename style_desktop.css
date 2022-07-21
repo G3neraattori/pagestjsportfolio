@@ -9,7 +9,7 @@ body{
     margin: 0 0 51px;
     padding: 0;
     background-image: linear-gradient(-135deg, indianred, purple, rebeccapurple, darkblue);
-
+    font-family: Verdana, sans-serif;
 }
 main{
     position:absolute;
@@ -24,10 +24,9 @@ main{
 
 
 #gitPortfolio{
-    margin: 1px ;
+    margin: 0.3rem ;
     border-radius: 10px;
-    border: 2px solid gray;
-    background-color: whitesmoke;
+    background: white;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -35,8 +34,8 @@ main{
 
 #browserBar{
     border-radius: 6px 6px 0 0;
-    border: 1px solid gray;
-    background-color: gray;
+    padding: 0.4rem;
+    background: linear-gradient(to bottom,  #a9a9a9 1%,#7d7d7d 100%);
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -46,22 +45,67 @@ main{
 }
 
 #closeButton{
-    height: 12px;
-    width: 12px;
+    height: 1.2rem;
+    width: 1.2rem;
     margin: 2px 0 0;
     border-radius: 50%;
-    border: 2px darkred;
+    background-color: #8f3333;
+    border: 3px solid darkred;
 }
 
 #browserText{
     margin: 0;
 }
 
+#portfolioContent{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+    overflow: auto;
+}
+
+.gitContainer{
+    height: 30vh;
+    width: 37vw;
+    padding: 10px;
+    margin: 2vh;
+    border-radius: 15px;
+    border: 0.2rem solid #7d7d7d;
+    cursor: pointer;
+    box-shadow: 7px 8px 5px -5px #a9a9a9;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+.gitHeaderText{
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+
+}
+
+.rounded{
+    border-radius: 9990px;
+}
+
+.gitCardBody{
+    font-size: 2vh;
+    overflow: hidden;
+    flex-grow: 1;
+
+}
+
+.gitCardLanguages{
+
+}
 
 
-
-
-/* FOOTER AKA TASKBAR CSS. px can be used since the page can't be scaled*/
+/* FOOTER AKA TASKBAR CSS. px can be used since the page can't be scaled
+           */
 .footer{
     position: absolute;
     bottom: 10px;
@@ -81,49 +125,16 @@ main{
     border-radius: 10px;
     padding-left: 2px;
     padding-right: 2px;
+    align-items: center;
     background: rgba(245,245,245, 0.5);
 
 }
 
 
-
-#portfolioContent{
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: space-between;
-    overflow: auto;
-}
-
-.gitContainer{
-    height: 105px;
-    width: 180px;
-    padding: 10px;
-    margin: 10px;
-    border-radius: 5%;
-    border: 1px solid gray;
-
-}
-
-
-
-
-
-
-
-
-
-
-/*TODO Remove this and fix the taskbar sizing to dynamic*/
-#task-content {
-    margin: 0;
-    display: block;
-}
-
 #menuButton, #gitButton, #meButton{
     height: 30px;
     width: 30px;
-    margin: 0;
+    margin: 2px;
     border-radius: 25%;
     display: inline-block;
     border: none;

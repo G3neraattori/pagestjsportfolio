@@ -45,8 +45,8 @@ div.style.width = '480px';
 div.style.height = '360px';
 //div.style.backgroundColor = '#820909';
 const iframe = document.createElement( 'iframe' );
-iframe.style.width = '480px';
-iframe.style.height = '360px';
+iframe.style.width = '1080px';
+iframe.style.height = '810px';
 iframe.style.border = '0px';
 iframe.src = '/desktop.html';
 div.appendChild( iframe );
@@ -70,8 +70,8 @@ gltfLoader.load('./models/laptop.gltf', (gltfScene) => {
 object.position.setZ(-130)
 object.position.setY(108)
 object.rotation.x = -0.25;
-let num = 0.55
-object.scale.set(0.6, 0.5, num)
+let num = 0.55/1.5/1.5
+object.scale.set(0.6/1.5/1.5, 0.5/1.5/1.5, num)
 
 
 scene.background = new THREE.Color(0xFFFFFF)
