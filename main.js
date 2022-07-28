@@ -103,7 +103,7 @@ function init() {
 
 
     let gltf
-    gltfLoader.load('./models/laptop.gltf', (gltfScene) => {
+    gltfLoader.load('/models/laptop.gltf', (gltfScene) => {
         laptop = gltfScene.scene
         gltfScene.scene.scale.set(12, 12, 12)
         gltfScene.scene.position.set(340, 90, 760)
@@ -119,7 +119,7 @@ function init() {
         //cssobject.rotation.set(gltf.children[0].children[3].x, gltf.children[0].children[3].y, gltf.children[0].children[3].z);
     })
     console.log('laptop'+ laptop)
-    gltfLoader.load('./models/cup.glb', (gltfScene) => {
+    gltfLoader.load('/models/cup.glb', (gltfScene) => {
         cup = gltfScene.scene
         gltfScene.scene.scale.set(4, 4, 4)
         gltfScene.scene.position.set(305, 91, 760)
@@ -129,7 +129,7 @@ function init() {
         //cssobject.position.set(gltf.children[0].children[3].x, gltf.children[0].children[3].position.y, gltf.children[0].children[3].position.z);
         //cssobject.rotation.set(gltf.children[0].children[3].x, gltf.children[0].children[3].y, gltf.children[0].children[3].z);
     })
-    gltfLoader.load('./models/layout_table_shaded.glb', (gltfScene) => {
+    gltfLoader.load('/models/layout_table_shaded.glb', (gltfScene) => {
         gltf = gltfScene.scene
         gltfScene.scene.scale.set(100, 100, 100)
         gltfScene.scene.traverse( function( node ) {
@@ -152,7 +152,7 @@ function init() {
 
 
 
-    new RGBELoader(loadingManager).load('./models/lakeside_4k.hdr', function (texture) {
+    new RGBELoader(loadingManager).load('/models/lakeside_4k.hdr', function (texture) {
         texture.mapping = THREE.EquirectangularReflectionMapping;
         scene.background = texture;
         scene.environment = texture;
