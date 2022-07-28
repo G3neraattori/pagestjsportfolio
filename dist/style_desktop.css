@@ -1,0 +1,158 @@
+html{
+    position: relative;
+    min-height: 100%;
+    margin: 0;
+    -webkit-backface-visibility: hidden;
+}
+body{
+    height: 100%;
+    margin: 0 0 51px;
+    padding: 0;
+    background-image: linear-gradient(-135deg, indianred, purple, rebeccapurple, darkblue);
+    font-family: Verdana, sans-serif;
+}
+main{
+    position:absolute;
+    bottom:60px;
+    top: 0;
+    min-width: 100%;
+}
+#desktop{
+    height: 100%;
+
+}
+
+
+#gitPortfolio{
+    margin: 0.3rem ;
+    border-radius: 10px;
+    background: white;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#browserBar{
+    border-radius: 6px 6px 0 0;
+    padding: 0.4rem;
+    background: linear-gradient(to bottom,  #a9a9a9 1%,#7d7d7d 100%);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+
+
+}
+
+#closeButton{
+    height: 1.2rem;
+    width: 1.2rem;
+    margin: 2px 0 0;
+
+    background-color: #8f6666;
+    /*
+    border-radius: 50%;
+    border: 3px solid darkred;
+     */
+    border: 0;
+    text-align: center;
+    font-weight: bolder;
+    padding: 0;
+    color: darkred;
+    border-radius: 100%;
+    box-shadow: 0 0 2px 2px darkred;
+    overflow: hidden;
+}
+
+#browserText{
+    margin: 0;
+}
+
+#portfolioContent{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+    overflow: auto;
+}
+
+.gitContainer{
+    height: 30vh;
+    width: 37vw;
+    padding: 10px;
+    margin: 4vh 2vh 2vh;
+    /*
+    border-radius: 2rem;
+    border: 0.2rem solid #7d7d7d;
+    box-shadow: 7px 8px 5px -5px #a9a9a9;
+    */
+    border-radius: 5%;
+    box-shadow: 5px 5px 5px 7px #a9a9a9;
+    overflow: hidden;
+    display: flex;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+.gitHeaderText{
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+
+}
+
+.rounded{
+    border-radius: 9990px;
+    image-rendering: pixelated;
+}
+
+.gitCardBody{
+    font-size: 2vh;
+    overflow: hidden;
+    flex-grow: 1;
+
+}
+
+.gitCardLanguages{
+
+}
+
+
+/* FOOTER AKA TASKBAR CSS. px can be used since the page can't be scaled
+           */
+.footer{
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    height: 40px; /* Set the fixed height of the footer here */
+    line-height: 27px; /* Vertically center the text there */
+    display: flex;
+    justify-content: center;
+}
+
+#taskbar {
+    position: absolute;
+    min-width: 10%;
+    height: 40px;
+    display: flex;
+    justify-content: space-around;
+    border-radius: 10px;
+    padding-left: 2px;
+    padding-right: 2px;
+    align-items: center;
+    background: rgba(245,245,245, 0.5);
+
+}
+
+
+#menuButton, #gitButton, #meButton{
+    height: 30px;
+    width: 30px;
+    margin: 2px;
+    border-radius: 25%;
+    display: inline-block;
+    border: none;
+    box-shadow: -2px 1px rgba(100,100,100, 0.2);
+}
