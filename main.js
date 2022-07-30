@@ -67,7 +67,7 @@ function init() {
     const progressBar = document.getElementById('progress-bar');
     loadingManager.onProgress = function (url, loaded, total) {
         progressBar.value = (loaded / total) * 100;
-        console.log(loaded)
+        ////console.log(loaded)
 
     }
     const loadingBarContainer = document.querySelector('.loading-container');
@@ -113,12 +113,12 @@ function init() {
         cssobject.position.set(laptop.position.x+5.5, 102.6, laptop.position.z+15)
         cssobject.rotation.set(laptop.rotation.x, laptop.rotation.y, laptop.rotation.z)
         cssobject.rotateX(-0.25)
-        console.log(gltfScene)
-        console.log(laptop.children[0].children[3])
+        ////console.log(gltfScene)
+        //console.log(laptop.children[0].children[3])
         //cssobject.position.set(gltf.children[0].children[3].x, gltf.children[0].children[3].position.y, gltf.children[0].children[3].position.z);
         //cssobject.rotation.set(gltf.children[0].children[3].x, gltf.children[0].children[3].y, gltf.children[0].children[3].z);
     })
-    console.log('laptop'+ laptop)
+    //console.log('laptop'+ laptop)
     gltfLoader.load('/pagestjsportfolio/models/cup.glb', (gltfScene) => {
         cup = gltfScene.scene
         gltfScene.scene.scale.set(4, 4, 4)
@@ -135,15 +135,15 @@ function init() {
         gltfScene.scene.traverse( function( node ) {
 
             if ( node.isMesh ) {
-                console.log('asdasd')
+                //console.log('asdasd')
                 node.castShadow = true;
                 node.receiveShadow = true;
             }
 
         } );
         scene.add(gltfScene.scene)
-        console.log(gltf)
-        console.log(gltf.children[0].children[3])
+        //console.log(gltf)
+        //console.log(gltf.children[0].children[3])
         //cssobject.position.set(gltf.children[0].children[3].x, gltf.children[0].children[3].position.y, gltf.children[0].children[3].position.z);
         //cssobject.rotation.set(gltf.children[0].children[3].x, gltf.children[0].children[3].y, gltf.children[0].children[3].z);
     })
@@ -165,7 +165,7 @@ function init() {
         mouse.x = (event.clientX / innerWidth) * 2 - 1
         mouse.y = -(event.clientY / innerHeight) * 2 + 1
     })
-    renderer.domElement.addEventListener('click', onObjectClick, false);
+    renderer.domElement.addEventListener('mousedown', onObjectClick, false);
 }
 
 function onWindowResize() {
@@ -264,7 +264,7 @@ function moveCamera(){
         ease: "none",
         duration: 1.2,
         onUpdate: function () {
-            console.log(cup.position)
+            //console.log(cup.position)
             camera.lookAt(cup.position);
             //330, 106, 770
             //TODO error handling for this
