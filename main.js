@@ -5,6 +5,7 @@ import {GLTFLoader} from "three/examples/jsm/loaders/GLTFLoader.js";
 import {VertexNormalsHelper} from "three/examples/jsm/helpers/VertexNormalsHelper.js";
 import {RGBELoader} from "three/examples/jsm/loaders/RGBELoader.js";
 import {gsap} from "gsap";
+import {MathUtils} from "three";
 
 
 let CSSrenderer, camera, scene, renderer, raycaster;
@@ -40,8 +41,8 @@ function init() {
     //container.appendChild(renderer.domElement)
 
     new OrbitControls(camera, CSSrenderer.domElement)
-    camera.position.set(200, 150, 200);
-    camera.rotation.set(0, 90, 0)
+    camera.position.set(340, 90, 760);
+
 
 
     const light = new THREE.DirectionalLight(0xFFFFFF, 1)
@@ -74,7 +75,7 @@ function init() {
     loadingManager.onLoad = function () {
         loadingBarContainer.style.display = 'none';
         container.appendChild(CSSrenderer.domElement)
-        //moveCamera()
+        moveCamera2()
     }
 
     const gltfLoader = new GLTFLoader(loadingManager);
@@ -113,6 +114,7 @@ function init() {
         cssobject.position.set(laptop.position.x+5.5, 102.6, laptop.position.z+15)
         cssobject.rotation.set(laptop.rotation.x, laptop.rotation.y, laptop.rotation.z)
         cssobject.rotateX(-0.25)
+        camera.rotation.set(laptop.position)
         ////console.log(gltfScene)
         //console.log(laptop.children[0].children[3])
         //cssobject.position.set(gltf.children[0].children[3].x, gltf.children[0].children[3].position.y, gltf.children[0].children[3].position.z);
@@ -187,15 +189,19 @@ function onWindowResize() {
 
 
     camera.updateProjectionMatrix();
-    if (innerHeight>540){
-        camera.aspect = innerWidth / innerHeight;
-        renderer.setSize(innerWidth, innerHeight);
-        CSSrenderer.setSize(innerWidth, innerHeight);
-    }else{
-        camera.aspect = innerWidth / 540;
-        renderer.setSize(innerWidth, 540);
-        CSSrenderer.setSize(innerWidth, 540);
+    camera.aspect = innerWidth / innerHeight;
+    if (camera.aspect > (16/9)) {
+        camera.fov = 60;
+    } else {
+        const cameraHeight = Math.tan(MathUtils.degToRad(60 / 2));
+        const ratio = camera.aspect / (16/9);
+        const newCameraHeight = cameraHeight / ratio;
+        camera.fov = MathUtils.radToDeg(Math.atan(newCameraHeight)) * 2;
     }
+
+    renderer.setSize(innerWidth, innerHeight);
+    CSSrenderer.setSize(innerWidth, innerHeight);
+
 
 }
 
@@ -285,6 +291,19 @@ function moveCamera(){
 
      */
 }
+function moveCamera2(){
+    gsap.timeline()
+        .to(camera.position, {
+            x: 313,
+            y: 116,
+            z: 670,
+
+            duration: 2.2,
+            onUpdate: function () {
+                camera.lookAt(cup.position);
+            }
+        });
+}
 function onObjectClick() {
     raycaster.setFromCamera(mouse, camera)
     const intersects = raycaster.intersectObject(laptop, true)
@@ -346,11 +365,26 @@ function divClick() {
 
 
 }
+function start(){
+    const loading = document.getElementById('loading');
+    if (loading.style.display === "none") {
+
+        document.getElementById("desktop").style.display = "none";
+        loading.style.display = "block";
+        document.getElementById("arrow-down").style.display = "block";
+    }
+    document.getElementById("desktop").style.display = "none";
+    loading.style.display = "flex";
+    document.getElementById("arrow-down").style.display = "flex";
+    init()
+    animate()
+}
+
+
 document.getElementById('arrow-down').addEventListener('click', divClick);
+document.getElementById('meButton').addEventListener('click', start);
 
 
-init()
-animate()
 
 
 

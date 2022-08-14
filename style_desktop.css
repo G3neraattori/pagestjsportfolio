@@ -23,6 +23,7 @@ main{
 }
 
 
+
 #gitPortfolio{
     margin: 0.3rem ;
     border-radius: 10px;
@@ -120,8 +121,7 @@ main{
 }
 
 
-/* FOOTER AKA TASKBAR CSS. px can be used since the page can't be scaled
-           */
+/* FOOTER AKA TASKBAR CSS. */
 .footer{
     position: absolute;
     bottom: 10px;

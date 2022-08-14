@@ -7,7 +7,123 @@
   <title>G3neraattori Portfolio</title>
 </head>
 <body >
-  <div class="loading-container">
+<main>
+  <div id="desktop">
+    <div id="help" class="fade-out">
+      Click the windows or buttons below to change windows
+    </div>
+    <div id="startup1" class="pcwindow" style="display: flex">
+      <div class="browserBar">
+        <h5 class="browserText">Hello</h5>
+      </div>
+      <div class="pcwindowContent">
+
+      </div>
+    </div>
+    <div id="startup2" class="pcwindow" style="display: flex">
+      <div class="browserBar">
+        <h5 class="browserText">Hello</h5>
+      </div>
+      <div class="pcwindowContent">
+
+      </div>
+    </div>
+    <div id="startup3" class="pcwindow" style="display: flex">
+      <div class="browserBar">
+        <h5 class="browserText">Hello</h5>
+      </div>
+      <div class="pcwindowContent">
+
+      </div>
+    </div>
+
+    <div id="gitPortfolio" style="display: none">
+      <div class="browserBar">
+        <button id="closeButton" class="gitButton" onclick="showGit()">X</button>
+        <h5 class="browserText">Github Portfolio</h5>
+      </div>
+      <div id="portfolioContent">
+        <div class="gitContainer" onclick="window.open('https://github.com/G3neraattori/KyykkaHaukiBotti',target='_blank');" >
+          <div class="gitCardHeader">
+            <p class="gitHeaderText">This site!</p>
+            <hr>
+          </div>
+          <div class="gitCardBody">
+            The largest of my projects yet. A homepage combining 3D and 2D webpage elements to one site. Demonstrates my other hobbies like 3D-modeling as well.
+          </div>
+          <div class="gitCardLanguages">
+            <hr>
+            <img class="rounded" src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
+            <img class="rounded" src="https://img.shields.io/badge/CSS-239120?&style=for-the-badge&logo=css3&logoColor=white">
+            <img class="rounded" src="https://img.shields.io/badge/HTML-239120?style=for-the-badge&logo=html5&logoColor=white">
+            <img class="rounded" src="https://img.shields.io/badge/blender-%23F5792A.svg?style=for-the-badge&logo=blender&logoColor=white">
+            <img class="rounded" src="https://img.shields.io/badge/ThreeJS-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E">
+          </div>
+        </div>
+
+        <div class="gitContainer" onclick="window.open('https://github.com/G3neraattori/whiskypricesite',target='_blank');">
+          <div class="gitCardHeader" >
+            <p class="gitHeaderText">Whisky Price Tracker</p>
+            <hr>
+          </div>
+          <div class="gitCardBody">
+            Fullstack project for LUT fullstack course. Original idea came from a request for a site checking the price and history of whiskies available in the alko site.
+          </div>
+          <div class="gitCardLanguages">
+            <hr>
+            <img class="rounded" src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white">
+            <img class="rounded" src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white">
+            <img class="rounded" src="https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white">
+            <img class="rounded" src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white">
+          </div>
+        </div>
+
+        <div class="gitContainer" onclick="window.open('https://github.com/G3neraattori/OlioHarkkaRyhmaAnyPercent',target='_blank');">
+          <div class="gitCardHeader">
+            <p class="gitHeaderText">Android Finnkino App</p>
+            <hr>
+          </div>
+          <div class="gitCardBody">
+            App that lists Finnkino movies, and their corresponding info such as IMDB reviews, runtime and release date. Also includes some databasing functionality.
+          </div>
+          <div class="gitCardLanguages">
+            <hr>
+            <img class="rounded" src="https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white">
+            <img class="rounded" src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white">
+          </div>
+        </div>
+
+        <div class="gitContainer" onclick="window.open('https://github.com/G3neraattori/KyykkaHaukiBotti',target='_blank');">
+          <div class="gitCardHeader">
+            <p class="gitHeaderText">Kyykka Hauki Bot</p>
+            <hr>
+          </div>
+          <div class="gitCardBody">
+            A Telegram bot for the outdoor game kyykkä originally made for our kyykkä team. Contains database functionality in json.
+          </div>
+          <div class="gitCardLanguages">
+            <hr>
+            <img class="rounded" src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white">
+            <img class="rounded" src="https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white">
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</main>
+<footer class="footer">
+  <div id="taskbar" class="container">
+    <button id="menuButton"></button>
+    <button id="gitButton" class="gitButton" onclick="showGit()"></button>
+    <button id="meButton"></button>
+  </div>
+</footer>
+<script src="/desktop.js"></script>
+
+
+
+  <div class="loading-container" id="loading">
     <label for="progress-bar">Loading...</label>
     <progress id="progress-bar" value="0" max="100"></progress>
   </div>
