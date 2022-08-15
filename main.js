@@ -65,9 +65,13 @@ function init() {
 
     const loadingManager = new THREE.LoadingManager();
 
-    const progressBar = document.getElementById('progress-bar');
+    const progressBar = document.getElementById('outer');
+    const loadingBarText = document.getElementById('loading-progress');
+
     loadingManager.onProgress = function (url, loaded, total) {
-        progressBar.value = (loaded / total) * 100;
+        //progressBar.value = (loaded / total) * 100;
+        progressBar.style.background = `conic-gradient(purple ${ (loaded / total) * 100 * 3.6}deg, rgba(1,1,1, 0.30) 4deg)`;
+        loadingBarText.textContent = (String)((loaded / total) * 100)+'%';
         ////console.log(loaded)
 
     }

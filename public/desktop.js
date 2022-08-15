@@ -41,3 +41,4 @@ help.addEventListener("animationend", (ev) => {
 
 
 document.getElementById("menuButton").addEventListener('click', showMenu)
+document.getElementById("closeButton").addEventListener('click', showGit)
