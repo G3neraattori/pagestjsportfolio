@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="68mm"
+   height="68mm"
+   viewBox="0 0 68 68"
+   version="1.1"
+   id="svg5"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs2">
+    <linearGradient
+       id="linearGradient5088">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop5086" />
+    </linearGradient>
+  </defs>
+  <g
+     id="layer1"
+     transform="translate(-4.0258036,-3.302824)">
+    <circle
+       style="fill:#171517;stroke-width:0.264583;fill-opacity:1"
+       id="path115"
+       r="10"
+       cy="13.302824"
+       cx="14.025804" />
+    <use
+       x="0"
+       y="0"
+       xlink:href="#path115"
+       transform="translate(0,24)"
+       id="use366"
+       style="fill:none;stroke:#000000;fill-opacity:1;fill-rule:nonzero;opacity:1;stroke-opacity:0;stroke-width:0;stroke-dasharray:none" />
+    <use
+       x="0"
+       y="0"
+       xlink:href="#path115"
+       transform="translate(0,48)"
+       id="use368"
+       style="fill:none;stroke:#000000;fill-opacity:1;fill-rule:nonzero;opacity:1;stroke-opacity:0;stroke-width:0;stroke-dasharray:none" />
+    <use
+       x="0"
+       y="0"
+       xlink:href="#path115"
+       transform="translate(24)"
+       id="use370"
+       style="fill:none;stroke:#000000;fill-opacity:1;fill-rule:nonzero;opacity:1;stroke-opacity:0;stroke-width:0;stroke-dasharray:none" />
+    <use
+       x="0"
+       y="0"
+       xlink:href="#path115"
+       transform="translate(24,24)"
+       id="use372"
+       style="fill:none;stroke:#000000;fill-opacity:1;fill-rule:nonzero;opacity:1;stroke-opacity:0;stroke-width:0;stroke-dasharray:none" />
+    <use
+       x="0"
+       y="0"
+       xlink:href="#path115"
+       transform="translate(24,48)"
+       id="use374"
+       style="fill:none;stroke:#000000;fill-opacity:1;fill-rule:nonzero;opacity:1;stroke-opacity:0;stroke-width:0;stroke-dasharray:none" />
+    <use
+       x="0"
+       y="0"
+       xlink:href="#path115"
+       transform="translate(48)"
+       id="use376"
+       style="fill:none;stroke:#000000;fill-opacity:1;fill-rule:nonzero;opacity:1;stroke-opacity:0;stroke-width:0;stroke-dasharray:none" />
+    <use
+       x="0"
+       y="0"
+       xlink:href="#path115"
+       transform="translate(48,24)"
+       id="use378"
+       style="fill:none;stroke:#000000;fill-opacity:1;fill-rule:nonzero;opacity:1;stroke-opacity:0;stroke-width:0;stroke-dasharray:none" />
+    <use
+       x="0"
+       y="0"
+       xlink:href="#path115"
+       transform="translate(48,48)"
+       id="use380"
+       style="fill:none;stroke:#000000;fill-opacity:1;fill-rule:nonzero;opacity:1;stroke-opacity:0;stroke-width:0;stroke-dasharray:none" />
+  </g>
+</svg>
