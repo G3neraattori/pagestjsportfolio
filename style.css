@@ -133,7 +133,7 @@ main{
     left: 0;
     color: white;
     text-align: center;
-
+    z-index: -99;
 }
 .fade-out {
     animation: fadeOut ease 8s forwards;
@@ -157,15 +157,28 @@ main{
     flex-direction: column;
     box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
+#windowsContainer{
+    margin-top: 2.5rem;
+    height: 100%;
+    display: flex;
+    overflow: hidden;
+    min-height: 10px;
+    min-width: 10px;
+ }
+
 .pcwindow{
     border-radius: 10px;
     background: white;
-    height: 20rem;
+    max-width: 30rem;
+    max-height: 25rem;
     width: 20rem;
     margin: 2rem;
     display: flex;
+    min-height: 10px;
+    min-width: 10px;
     flex-direction: column;
     box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    cursor: pointer;
 }
 .pcwindowContent{
     padding: 1rem;
@@ -173,6 +186,7 @@ main{
     padding-left: 1.2rem;
     font-weight: 300;
     text-align: left;
+    overflow: auto;
 
 }
 .browserBar{
@@ -337,7 +351,7 @@ main{
 }
 
 
-#menuButton, #gitButton, #meButton{
+#menuButton, #gitButton, #meButton, #linkedInButton{
     height: 2.8rem;
     width: 2.8rem;
     margin: 0.3rem;
@@ -359,4 +373,10 @@ main{
 
 #gitButton{
     background-image: url("/GitHub-Mark-120px-plus.png");
+}
+
+#laptopsvg{
+    padding: 0;
+    margin: 0;
+    margin-bottom: -0.15rem;
 }

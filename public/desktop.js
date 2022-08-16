@@ -3,6 +3,8 @@ const mainMenu = document.getElementsByClassName("pcwindow")
 
 function showGit() {
     if (git.style.display === "none") {
+        document.getElementById("windowsContainer").style.display = "none"
+
         git.style.display = "flex";
         for(let i = 0; i < mainMenu.length; i++){
             mainMenu[i].style.display = "none";
@@ -15,6 +17,7 @@ function showGit() {
 function showMenu(){
     if (mainMenu[0].style.display === "none") {
         clearAll()
+        document.getElementById("windowsContainer").style.display = "flex"
         for(let i = 0; i < mainMenu.length; i++){
             mainMenu[i].style.display = "flex";
         }
@@ -28,6 +31,7 @@ function clearAll(){
     for(let i = 0; i < mainMenu.length; i++){
         mainMenu[i].style.display = "none";
     }
+    document.getElementById("windowsContainer").style.display = "none";
 
 }
 
@@ -40,5 +44,8 @@ help.addEventListener("animationend", (ev) => {
 }, false);
 
 
+
+/*Listeners*/
 document.getElementById("menuButton").addEventListener('click', showMenu)
 document.getElementById("closeButton").addEventListener('click', showGit)
+document.getElementById("startup1").addEventListener('click', showGit)

@@ -12,33 +12,34 @@
     <div id="help" class="fade-out">
       Click the windows or buttons below to change windows
     </div>
-    <div id="startup1" class="pcwindow" style="display: flex">
-      <div class="browserBar">
-        <h5 class="browserText">Github</h5>
+    <div id="windowsContainer">
+      <div id="startup1" class="pcwindow" style="display: flex">
+        <div class="browserBar">
+          <h5 class="browserText">Github</h5>
+        </div>
+        <div class="pcwindowContent">
+            A selection of my github projects.
+        </div>
       </div>
-      <div class="pcwindowContent">
-          A selection of my github projects.
-      </div>
-    </div>
-    <div id="startup2" class="pcwindow" style="display: flex">
-      <div class="browserBar">
-        <h5 class="browserText">Hello</h5>
-      </div>
-      <div class="pcwindowContent">
+      <div id="startup2" class="pcwindow" style="display: flex" onclick="window.open('https://www.linkedin.com/',target='_blank');">
+        <div class="browserBar">
+          <h5 class="browserText">LinkedIn</h5>
+        </div>
+        <div class="pcwindowContent">
 
+        </div>
+      </div>
+      <div id="startup3" class="pcwindow" style="display: flex">
+        <div class="browserBar">
+          <h5 class="browserText">ThreeJS</h5>
+        </div>
+        <div class="pcwindowContent">
+          Experience the site in 3D. ThreeJS version of this site.
+          <br>
+          Note: Requires webGL support and is highly unoptimized and unfinished. Requires somewhat decent PC to run.
+        </div>
       </div>
     </div>
-    <div id="startup3" class="pcwindow" style="display: flex">
-      <div class="browserBar">
-        <h5 class="browserText">ThreeJS</h5>
-      </div>
-      <div class="pcwindowContent">
-        Experience the site in 3D. ThreeJS version of this site.
-        <br>
-        Note: Requires webGL support and is highly unoptimized and unfinished. Requires somewhat decent PC to run.
-      </div>
-    </div>
-
     <div id="gitPortfolio" style="display: none">
       <div class="browserBar">
 <!--        <button id="closeButton" class="gitButton" onclick="showGit()">X</button>-->
@@ -48,7 +49,7 @@
         <h5 class="browserText">Github Portfolio</h5>
       </div>
       <div id="portfolioContent">
-        <div class="gitContainer" onclick="window.open('https://github.com/G3neraattori/KyykkaHaukiBotti',target='_blank');" >
+        <div class="gitContainer" onclick="window.open('https://github.com/G3neraattori/pagestjsportfolio',target='_blank');" >
           <div class="gitCardHeader">
             <p class="gitHeaderText">This site!</p>
             <hr class="gitHr">
@@ -121,7 +122,12 @@
   <div id="taskbar" class="container">
     <button id="menuButton"></button>
     <button id="gitButton" class="gitButton" onclick="showGit()"></button>
-    <button id="meButton"></button>
+    <button id="linkedInButton" onclick="window.open('https://www.linkedin.com/',target='_blank');">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z"/></svg>
+    </button>
+    <button id="meButton">
+      <svg id="laptopsvg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M22 3.2c0-.663-.537-1.2-1.2-1.2h-17.6c-.663 0-1.2.537-1.2 1.2v11.8h20v-11.8zm-2 9.8h-16v-9h16v9zm2 3h-20c-.197.372-2 4.582-2 4.998 0 .522.418 1.002 1.002 1.002h21.996c.584 0 1.002-.48 1.002-1.002 0-.416-1.803-4.626-2-4.998zm-12.229 5l.467-1h3.523l.467 1h-4.457z"/></svg>
+    </button>
   </div>
 </footer>
 <script src="/desktop.js"></script>

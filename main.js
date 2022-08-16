@@ -387,7 +387,7 @@ function start(){
 
 document.getElementById('arrow-down').addEventListener('click', divClick);
 document.getElementById('meButton').addEventListener('click', start);
-
+document.getElementById('startup3').addEventListener('click', start);
 
 
 
