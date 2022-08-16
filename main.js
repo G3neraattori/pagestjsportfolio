@@ -10,7 +10,10 @@ import {func} from "three/examples/jsm/nodes/shadernode/ShaderNodeBaseElements.j
 
 
 let CSSrenderer, camera, scene, renderer, raycaster;
-let laptop, cup, cssobject;
+let laptop, cup, cssobject, notebook;
+let mixer, action1;
+let clock = new THREE.Clock();
+let notemode = false;
 const mouse = {
     x: undefined,
     y: undefined
@@ -158,6 +161,26 @@ function init() {
         //cssobject.position.set(gltf.children[0].children[3].x, gltf.children[0].children[3].position.y, gltf.children[0].children[3].position.z);
         //cssobject.rotation.set(gltf.children[0].children[3].x, gltf.children[0].children[3].y, gltf.children[0].children[3].z);
     })
+    gltfLoader.load('/pagestjsportfolio/models/notebook3.glb', (gltfScene) => {
+        notebook = gltfScene.scene
+        scene.add(gltfScene.scene)
+        gltfScene.scene.scale.set(2.5, 2.5, 2.5)
+        gltfScene.scene.position.set(293, 91, 750)
+        gltfScene.scene.rotateY(Math.PI / 180 * 160)
+        console.log(gltfScene)
+        mixer = new THREE.AnimationMixer(notebook);
+        action1 = mixer.clipAction(gltfScene.animations[1]);
+
+        action1.reset();
+        action1.clampWhenFinished = true;
+        action1.timeScale = 1;
+        action1.setLoop(THREE.LoopOnce, 1);
+        action1.play();
+
+        //action1.play().reset();
+        //cssobject.position.set(gltf.children[0].children[3].x, gltf.children[0].children[3].position.y, gltf.children[0].children[3].position.z);
+        //cssobject.rotation.set(gltf.children[0].children[3].x, gltf.children[0].children[3].y, gltf.children[0].children[3].z);
+    })
 
 
 
@@ -214,6 +237,7 @@ function animate() {
     raycaster.setFromCamera(mouse, camera)
 
     const intersects = raycaster.intersectObject(laptop, true)
+    const intersectsNote = raycaster.intersectObject(notebook, true)
 
     if(intersects.length > 0){
         laptop.children[0].children[0].material.color.b = 1
@@ -225,6 +249,20 @@ function animate() {
         laptop.children[0].children[0].material.color.g = 0.31081438064575195
         laptop.children[0].children[0].material.color.r = 0.31081438064575195
     }
+
+    if(intersectsNote.length > 0 && notemode !== true){
+        notebook.children[0].children[1].material.color.b = 1
+        notebook.children[0].children[1].material.color.g = 1
+        notebook.children[0].children[1].material.color.r = 1
+
+    }else{
+        notebook.children[0].children[1].material.color.b = 0
+        notebook.children[0].children[1].material.color.g = 0
+        notebook.children[0].children[1].material.color.r = 0
+    }
+
+    let dt = clock.getDelta()
+    mixer.update(dt);
 
 }
 
@@ -309,6 +347,7 @@ function moveCamera2(){
 function onObjectClick() {
     raycaster.setFromCamera(mouse, camera)
     const intersects = raycaster.intersectObject(laptop, true)
+    const intersectsNote = raycaster.intersectObject(notebook, true)
     if (intersects.length > 0) {
         gsap.to(camera.position, {
             x: 335.5,
@@ -328,7 +367,29 @@ function onObjectClick() {
             }
         })
 
-    }else {
+    }else if (intersectsNote.length > 0) {
+        gsap.to(camera.position, {
+            x: notebook.position.x-2,
+            y: 110,
+            z: notebook.position.z - 10,
+            //295, 91, 750
+            duration: 2.2,
+            onUpdate: function (){
+                camera.lookAt(notebook.position.x-6, notebook.position.y, notebook.position.z);
+
+                action1.timeScale = -1;
+                action1.paused = false;
+
+            },
+            onComplete: function () {
+                notemode = true;
+
+                fixAspect(1.2)
+                camera.updateProjectionMatrix();
+            }
+        })
+
+    }/*else {
         gsap.to(camera.position, {
             x: 313,
             y: 116,
@@ -342,7 +403,7 @@ function onObjectClick() {
             }
         })
 
-    }
+    }*/
 }
 
 function divClick() {
@@ -354,9 +415,13 @@ function divClick() {
         duration: 1.2,
         onStart: function () {
             scene.remove(cssobject)
+            notemode = false;
         },
         onUpdate: function () {
             camera.lookAt(cup.position);
+            action1.timeScale = 1;
+            action1.paused = false;
+
             //330, 106, 770
             //TODO error handling for this
 
@@ -397,6 +462,7 @@ function leave(){
 }
 
 function fixAspect(mult){
+
 
     if (camera.aspect > (16/9)) {
         camera.fov = 50*mult;
