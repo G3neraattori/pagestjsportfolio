@@ -6,6 +6,7 @@ import {VertexNormalsHelper} from "three/examples/jsm/helpers/VertexNormalsHelpe
 import {RGBELoader} from "three/examples/jsm/loaders/RGBELoader.js";
 import {gsap} from "gsap";
 import {MathUtils} from "three";
+import {func} from "three/examples/jsm/nodes/shadernode/ShaderNodeBaseElements.js";
 
 
 let CSSrenderer, camera, scene, renderer, raycaster;
@@ -19,6 +20,7 @@ function init() {
     const container = document.getElementById('container');
     scene = new THREE.Scene();
     camera = new THREE.PerspectiveCamera(60, innerWidth / innerHeight, 0.1, 5000)
+
 
     CSSrenderer = new CSS3DRenderer();
     CSSrenderer.setSize(innerWidth, innerHeight)
@@ -58,8 +60,8 @@ function init() {
     light.shadow.camera.far = 1000;
     light.shadow.bias = -0.01
     light.rotateY((Math.PI / 180) * -90)
-    scene.add( new THREE.CameraHelper( light.shadow.camera ) );
-    scene.add( new THREE.DirectionalLightHelper( light, 500));
+    //scene.add( new THREE.CameraHelper( light.shadow.camera ) );
+    //scene.add( new THREE.DirectionalLightHelper( light, 500));
 
     scene.add(light)
 
@@ -79,7 +81,10 @@ function init() {
     loadingManager.onLoad = function () {
         loadingBarContainer.style.display = 'none';
         container.appendChild(CSSrenderer.domElement)
+
+        onWindowResize()
         moveCamera2()
+
     }
 
     const gltfLoader = new GLTFLoader(loadingManager);
@@ -172,6 +177,7 @@ function init() {
         mouse.y = -(event.clientY / innerHeight) * 2 + 1
     })
     renderer.domElement.addEventListener('mousedown', onObjectClick, false);
+
 }
 
 function onWindowResize() {
@@ -192,20 +198,12 @@ function onWindowResize() {
     }*/
 
 
-    camera.updateProjectionMatrix();
     camera.aspect = innerWidth / innerHeight;
-    if (camera.aspect > (16/9)) {
-        camera.fov = 60;
-    } else {
-        const cameraHeight = Math.tan(MathUtils.degToRad(60 / 2));
-        const ratio = camera.aspect / (16/9);
-        const newCameraHeight = cameraHeight / ratio;
-        camera.fov = MathUtils.radToDeg(Math.atan(newCameraHeight)) * 2;
-    }
+    fixAspect(1)
 
     renderer.setSize(innerWidth, innerHeight);
     CSSrenderer.setSize(innerWidth, innerHeight);
-
+    camera.updateProjectionMatrix();
 
 }
 
@@ -325,6 +323,8 @@ function onObjectClick() {
             },
             onComplete: function () {
                 scene.add(cssobject)
+                fixAspect(0.8)
+                camera.updateProjectionMatrix();
             }
         })
 
@@ -371,20 +371,42 @@ function divClick() {
 }
 function start(){
     const loading = document.getElementById('loading');
+
     if (loading.style.display === "none") {
 
         document.getElementById("desktop").style.display = "none";
         loading.style.display = "block";
+        document.getElementById('controls').style.display = "block";
         document.getElementById("arrow-down").style.display = "block";
     }
     document.getElementById("desktop").style.display = "none";
     loading.style.display = "flex";
+    document.getElementById('controls').style.display = "flex";
     document.getElementById("arrow-down").style.display = "flex";
     init()
     animate()
 }
 
+function leave(){
+    document.getElementById("desktop").style.display = "flex";
+    document.getElementById('controls').style.display = "none";
+    document.getElementById("arrow-down").style.display = "none";
+    container.removeChild(CSSrenderer.domElement);
+    container.removeChild(renderer.domElement);
 
+}
+
+function fixAspect(mult){
+
+    if (camera.aspect > (16/9)) {
+        camera.fov = 50*mult;
+    } else {
+        const cameraHeight = Math.tan(MathUtils.degToRad(50*mult / 2));
+        const ratio = camera.aspect / (16/9);
+        const newCameraHeight = cameraHeight / ratio;
+        camera.fov = MathUtils.radToDeg(Math.atan(newCameraHeight)) * 2;
+    }
+}
 document.getElementById('arrow-down').addEventListener('click', divClick);
 document.getElementById('meButton').addEventListener('click', start);
 document.getElementById('startup3').addEventListener('click', start);

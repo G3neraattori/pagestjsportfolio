@@ -2,29 +2,64 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="style_desktop.css">
+    <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Desktop</title>
   </head>
   <body >
     <main>
       <div id="desktop">
-        <div id="gitPortfolio" style="display: flex">
-          <div id="browserBar">
-            <button id="closeButton" class="gitButton" onclick="showGit()">X</button>
-            <h5 id="browserText">Github Portfolio</h5>
+        <div id="help" class="fade-out">
+          Click the windows or buttons below to change windows
+        </div>
+        <div id="windowsContainer">
+          <div id="startup1" class="pcwindow" style="display: flex">
+            <div class="browserBar">
+              <h5 class="browserText">Github</h5>
+            </div>
+            <div class="pcwindowContent">
+              A constantly growing selection of my github projects. I'll update this when new projects are finished (or finished enough).
+
+            </div>
+            <img src="/GitHub-Mark-120px-plus.png" class="content1">
+          </div>
+          <div id="startup2" class="pcwindow" style="display: flex" onclick="window.open('https://www.linkedin.com/',target='_blank');">
+            <div class="browserBar">
+              <h5 class="browserText">LinkedIn</h5>
+            </div>
+            <div class="pcwindowContent">
+              Interested? Check me out on LinkedIn.
+            </div>
+            <svg id="licontent" class="content1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          </div>
+          <div id="startup3" class="pcwindow" style="display: flex" onclick="window.top.location.reload();">
+            <div class="browserBar">
+              <h5 class="browserText">Back to 2D</h5>
+            </div>
+            <div class="pcwindowContent">
+              Done playing with 3D? Click here to get back to 2D page.
+            </div>
+          </div>
+        </div>
+        <div id="gitPortfolio" style="display: none">
+          <div class="browserBar">
+            <!--        <button id="closeButton" class="gitButton" onclick="showGit()">X</button>-->
+            <div class="newButton" id="closeButton">
+              <span class="newCloseText">X</span>
+            </div>
+            <h5 class="browserText">Github Portfolio</h5>
           </div>
           <div id="portfolioContent">
-            <div class="gitContainer" onclick="window.open('https://github.com/G3neraattori/KyykkaHaukiBotti',target='_blank');" >
+            <div class="gitContainer" onclick="window.open('https://github.com/G3neraattori/pagestjsportfolio',target='_blank');" >
               <div class="gitCardHeader">
                 <p class="gitHeaderText">This site!</p>
-                <hr>
+                <hr class="gitHr">
               </div>
               <div class="gitCardBody">
-                The largest of my projects yet. A homepage combining 3D and 2D webpage elements to one site. Demonstrates my other hobbies like 3D-modeling as well.
+                One of my largest projects. A homepage combining 3D and 2D webpage elements to one site whilst trying to keep the 2D in pure HTML+CSS as much as possible. Demonstrates my other hobbies like 3D-modeling.
               </div>
               <div class="gitCardLanguages">
-                <hr>
+                <hr class="gitHr">
                 <img class="rounded" src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
                 <img class="rounded" src="https://img.shields.io/badge/CSS-239120?&style=for-the-badge&logo=css3&logoColor=white">
                 <img class="rounded" src="https://img.shields.io/badge/HTML-239120?style=for-the-badge&logo=html5&logoColor=white">
@@ -36,13 +71,13 @@
             <div class="gitContainer" onclick="window.open('https://github.com/G3neraattori/whiskypricesite',target='_blank');">
               <div class="gitCardHeader" >
                 <p class="gitHeaderText">Whisky Price Tracker</p>
-                <hr>
+                <hr class="gitHr">
               </div>
               <div class="gitCardBody">
                 Fullstack project for LUT fullstack course. Original idea came from a request for a site checking the price and history of whiskies available in the alko site.
               </div>
               <div class="gitCardLanguages">
-                <hr>
+                <hr class="gitHr">
                 <img class="rounded" src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white">
                 <img class="rounded" src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white">
                 <img class="rounded" src="https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white">
@@ -53,13 +88,13 @@
             <div class="gitContainer" onclick="window.open('https://github.com/G3neraattori/OlioHarkkaRyhmaAnyPercent',target='_blank');">
               <div class="gitCardHeader">
                 <p class="gitHeaderText">Android Finnkino App</p>
-                <hr>
+                <hr class="gitHr">
               </div>
               <div class="gitCardBody">
                 App that lists Finnkino movies, and their corresponding info such as IMDB reviews, runtime and release date. Also includes some databasing functionality.
               </div>
               <div class="gitCardLanguages">
-                <hr>
+                <hr class="gitHr">
                 <img class="rounded" src="https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white">
                 <img class="rounded" src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white">
               </div>
@@ -68,13 +103,13 @@
             <div class="gitContainer" onclick="window.open('https://github.com/G3neraattori/KyykkaHaukiBotti',target='_blank');">
               <div class="gitCardHeader">
                 <p class="gitHeaderText">Kyykka Hauki Bot</p>
-                <hr>
+                <hr class="gitHr">
               </div>
               <div class="gitCardBody">
                 A Telegram bot for the outdoor game kyykkä originally made for our kyykkä team. Contains database functionality in json.
               </div>
               <div class="gitCardLanguages">
-                <hr>
+                <hr class="gitHr">
                 <img class="rounded" src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white">
                 <img class="rounded" src="https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white">
               </div>
@@ -84,16 +119,18 @@
         </div>
       </div>
     </main>
-
-
-
     <footer class="footer">
       <div id="taskbar" class="container">
-          <button id="menuButton"></button>
-          <button id="gitButton" class="gitButton" onclick="showGit()"></button>
-          <button id="meButton"></button>
+        <button id="menuButton"></button>
+        <button id="gitButton" class="gitButton" onclick="showGit()"></button>
+        <button id="linkedInButton" onclick="window.open('https://www.linkedin.com/',target='_blank');">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z"/></svg>
+        </button>
+        <button id="leaveButton" onclick="window.top.location.reload();">
+          <svg id="laptopsvg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M22 3.2c0-.663-.537-1.2-1.2-1.2h-17.6c-.663 0-1.2.537-1.2 1.2v11.8h20v-11.8zm-2 9.8h-16v-9h16v9zm2 3h-20c-.197.372-2 4.582-2 4.998 0 .522.418 1.002 1.002 1.002h21.996c.584 0 1.002-.48 1.002-1.002 0-.416-1.803-4.626-2-4.998zm-12.229 5l.467-1h3.523l.467 1h-4.457z"/></svg>
+        </button>
       </div>
     </footer>
-    <script src="/pagestjsportfolio/desktop.js"></script>
+    <script src="/desktop.js"></script>
   </body>
 </html>

@@ -69,12 +69,21 @@ body{
     color: rebeccapurple;
 }
 .hairline-down-arrow {
-    border: 1px solid black;
     border-radius: 50%;
     width: 65px;
     height: 65px;
     position: relative;
     background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    bottom: 10px;
+
+}
+.hairline-down-arrow:active {
+    background-color: whitesmoke;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -1px, rgba(0, 0, 0, 0.2) 0px -1px 0px inset;
+}
+.hairline-down-arrow:hover {
+    background-color: ghostwhite;
 }
 .hairline-down-arrow:after {
     content: "";
@@ -88,6 +97,10 @@ body{
     transform-origin: left;
     border-style: solid;
     border-color: black;
+}
+.hairline-down-arrow:active:after{
+    top: 7%;
+    border-color: #222222;
 }
 #arrow-down{
     display: none;
@@ -161,7 +174,11 @@ main{
     margin-top: 2.5rem;
     height: 100%;
     display: flex;
-    overflow: hidden;
+    flex-wrap: wrap;
+    flex-shrink: 5;
+    overflow: auto;
+    justify-content: center;
+    flex-grow: 5;
     min-height: 10px;
     min-width: 10px;
  }
@@ -187,8 +204,34 @@ main{
     font-weight: 300;
     text-align: left;
     overflow: auto;
+    display: inline-block;
+    align-items: center;
 
 }
+
+.content1{
+    align-self: center;
+    min-height: 10px;
+    min-width: 10px;
+    max-width: 12rem;
+    max-height: 12rem;
+    filter: opacity(50%);
+    padding: 1rem;
+
+}
+#licontent{
+    margin-top: 5rem;
+    min-height: 6rem;
+    min-width: 6rem;
+    max-width: 12rem;
+    max-height: 12rem;
+}
+
+#dcontent{
+    filter: opacity(50%) grayscale(1);
+}
+
+
 .browserBar{
     border-radius: 6px 6px 0 0;
     padding: 0.4rem;
@@ -351,7 +394,7 @@ main{
 }
 
 
-#menuButton, #gitButton, #meButton, #linkedInButton{
+#menuButton, #gitButton, #meButton, #linkedInButton, #leaveButton{
     height: 2.8rem;
     width: 2.8rem;
     margin: 0.3rem;
