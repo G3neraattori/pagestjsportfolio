@@ -6,54 +6,254 @@ html{
 }
 body{
     height: 100%;
-    margin: 0 0 51px;
+    margin: 0 0 5rem;
     padding: 0;
     background-image: linear-gradient(-135deg, indianred, purple, rebeccapurple, darkblue);
     font-family: Verdana, sans-serif;
 }
+.rounded{
+    border-radius: 9990px;
+    image-rendering: pixelated;
+}
+
+.loading-container{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.loading-loader{
+    width: 300px;
+    height: 300px;
+    position: relative;
+    background-color: #ffffff;
+    background-image: linear-gradient(315deg, #ffffff 0%, #d7e1ec 74%);
+    border-radius: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}
+.outer{
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background: conic-gradient(purple 3.6deg, rgba(1,1,1, 0.30) 0deg);
+    box-shadow: 6px 6px 10px -1px rgba(0,0,0,0.15), -6px -6px 10px -1px rgba(255,255,255,0.7);
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.outer::before{
+    content: "";
+    position: absolute;
+    height: 145px;
+    width: 145px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    background-image: linear-gradient(315deg, #ffffff 0%, #d7e1ec 74%);
+}
+#loading-progress{
+    position: relative;
+    font-size: 30px;
+    font-weight: 400;
+    color: rebeccapurple;
+}
+.hairline-down-arrow {
+    border-radius: 50%;
+    width: 65px;
+    height: 65px;
+    position: relative;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    bottom: 10px;
+
+}
+.hairline-down-arrow:active {
+    background-color: whitesmoke;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -1px, rgba(0, 0, 0, 0.2) 0px -1px 0px inset;
+}
+.hairline-down-arrow:hover {
+    background-color: ghostwhite;
+}
+.hairline-down-arrow:after {
+    content: "";
+    position: absolute;
+    top: 4%;
+    left: 54%;
+    width: 30px;
+    height: 30px;
+    border-width: 0px 1px 1px 0px;
+    transform: rotate(46deg) translate(-50%) skew(10deg, 10deg);
+    transform-origin: left;
+    border-style: solid;
+    border-color: black;
+}
+.hairline-down-arrow:active:after{
+    top: 7%;
+    border-color: #222222;
+}
+#arrow-down{
+    display: none;
+}
+
+.controls{
+    position: absolute;
+    bottom: 0.1rem;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+}
+
+
+
+
+
+
+
 main{
     position:absolute;
-    bottom:60px;
+    bottom:6rem;
     top: 0;
     min-width: 100%;
 }
 #desktop{
     height: 100%;
-
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+    top: 50%;
+    bottom: 50%;
+}
+#help{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 2rem;
+    left: 0;
+    color: white;
+    text-align: center;
+    z-index: -99;
+}
+.fade-out {
+    animation: fadeOut ease 8s forwards;
+}
+@keyframes fadeOut {
+    0% {
+        opacity:1;
+    }
+    100% {
+        opacity:0;
+    }
 }
 
 
 #gitPortfolio{
-    margin: 0.3rem ;
+    margin: 0.5rem ;
     border-radius: 10px;
     background: white;
     height: 100%;
     display: flex;
     flex-direction: column;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+#windowsContainer{
+    margin-top: 2.5rem;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-shrink: 5;
+    overflow: auto;
+    justify-content: center;
+    flex-grow: 5;
+    min-height: 10px;
+    min-width: 10px;
 }
 
-#browserBar{
+.pcwindow{
+    border-radius: 10px;
+    background: white;
+    max-width: 30rem;
+    max-height: 25rem;
+    width: 20rem;
+    margin: 2rem;
+    display: flex;
+    min-height: 10px;
+    min-width: 10px;
+    flex-direction: column;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    cursor: pointer;
+}
+.pcwindowContent{
+    padding: 1rem;
+    padding-top: 0.7rem;
+    padding-left: 1.2rem;
+    font-weight: 300;
+    text-align: left;
+    overflow: auto;
+    display: inline-block;
+    align-items: center;
+
+}
+
+.content1{
+    align-self: center;
+    min-height: 10px;
+    min-width: 10px;
+    max-width: 12rem;
+    max-height: 12rem;
+    filter: opacity(50%);
+    padding: 1rem;
+
+}
+#licontent{
+    margin-top: 5rem;
+    min-height: 6rem;
+    min-width: 6rem;
+    max-width: 12rem;
+    max-height: 12rem;
+}
+
+#dcontent{
+    filter: opacity(50%) grayscale(1);
+}
+
+
+.browserBar{
     border-radius: 6px 6px 0 0;
     padding: 0.4rem;
-    background: linear-gradient(to bottom,  #a9a9a9 1%,#7d7d7d 100%);
+    background-color: #4d4855;
+    background-image: linear-gradient(-147deg, #4d4855 0%, #000000 74%);
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 3px 5px -1px, rgba(0, 0, 0, 0.2) 0px -1px 0px inset;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 
-
-
 }
 
-#closeButton{
+/*#closeButton{
     height: 1.2rem;
     width: 1.2rem;
     margin: 2px 0 0;
 
     background-color: #8f6666;
-    /*
+
     border-radius: 50%;
     border: 3px solid darkred;
-     */
+
     border: 0;
     text-align: center;
     font-weight: bolder;
@@ -62,10 +262,44 @@ main{
     border-radius: 100%;
     box-shadow: 0 0 2px 2px darkred;
     overflow: hidden;
+}*/
+.newButton{
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 50%;
+    padding: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+}
+.newButton::before{
+    content: "";
+    position: absolute;
+    height: 1.2rem;
+    width: 1.2rem;
+    border-radius: 50%;
+    background-color: #a71d31;
+
+}
+.newCloseText:hover{
+    color: white;
 }
 
-#browserText{
+.newCloseText{
+    position: relative;
+    font-size: 0.9rem;
+    font-weight: 1000;
+    color: black;
+}
+
+.browserText{
     margin: 0;
+    padding-left: 0.1rem;
+    padding-right: 0.1rem;
+    color: white;
+    cursor: inherit;
 }
 
 #portfolioContent{
@@ -77,41 +311,55 @@ main{
 }
 
 .gitContainer{
-    height: 30vh;
-    width: 37vw;
-    padding: 10px;
+    min-height: 10rem;
+    height: 17rem;
+    max-height: 20rem;
+
+    min-width: 20rem;
+    width: 30rem;
+    max-width: 40rem;
+
+    padding: 1rem;
     margin: 4vh 2vh 2vh;
+    cursor: pointer;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     /*
     border-radius: 2rem;
     border: 0.2rem solid #7d7d7d;
     box-shadow: 7px 8px 5px -5px #a9a9a9;
     */
+    background: ghostwhite;
     border-radius: 5%;
-    box-shadow: 5px 5px 5px 7px #a9a9a9;
-    overflow: hidden;
-    display: flex;
-    cursor: pointer;
-    flex-direction: column;
-    justify-content: space-between;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;    justify-content: space-between;
+
 
 }
 
 .gitHeaderText{
     margin: 0;
     padding: 0;
-    font-weight: bold;
-
+    padding-left: 2px;
+    font-size: 1.3rem;
+    font-weight: 600;
 }
 
-.rounded{
-    border-radius: 9990px;
-    image-rendering: pixelated;
+.gitHr{
+    height: 0.2rem;
+    border-radius: 1rem 1rem 1rem 1rem;
+    border: 0;
+    box-shadow: inset 0 12px 12px -12px rgba(10, 50, 200, 0.5);
 }
-
 .gitCardBody{
-    font-size: 2vh;
+    font-size: 1.1rem;
     overflow: hidden;
     flex-grow: 1;
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+    font-weight: 300;
+
 
 }
 
@@ -120,14 +368,13 @@ main{
 }
 
 
-/* FOOTER AKA TASKBAR CSS. px can be used since the page can't be scaled
-           */
+/* FOOTER AKA TASKBAR CSS. */
 .footer{
     position: absolute;
-    bottom: 10px;
+    bottom: 1rem;
     width: 100%;
-    height: 40px; /* Set the fixed height of the footer here */
-    line-height: 27px; /* Vertically center the text there */
+    height: 4rem; /* Set the fixed height of the footer here */
+    line-height: 2.7rem; /* Vertically center the text there */
     display: flex;
     justify-content: center;
 }
@@ -135,24 +382,44 @@ main{
 #taskbar {
     position: absolute;
     min-width: 10%;
-    height: 40px;
+    height: 4rem;
     display: flex;
     justify-content: space-around;
-    border-radius: 10px;
-    padding-left: 2px;
-    padding-right: 2px;
+    border-radius: 0.7rem;
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
     align-items: center;
     background: rgba(245,245,245, 0.5);
 
 }
 
 
-#menuButton, #gitButton, #meButton{
-    height: 30px;
-    width: 30px;
-    margin: 2px;
+#menuButton, #gitButton, #meButton, #linkedInButton, #leaveButton{
+    height: 2.8rem;
+    width: 2.8rem;
+    margin: 0.3rem;
+    background-size: 2.1rem auto;
+    background-repeat: no-repeat;
+    background-position: center;
     border-radius: 25%;
     display: inline-block;
+    align-items: center;
+    justify-content: center;
     border: none;
     box-shadow: -2px 1px rgba(100,100,100, 0.2);
+}
+#menuButton{
+    background-image: url("dots2.svg");
+    background-size: 2rem auto;
+
+}
+
+#gitButton{
+    background-image: url("GitHub-Mark-120px-plus.png");
+}
+
+#laptopsvg{
+    padding: 0;
+    margin: 0;
+    margin-bottom: -0.15rem;
 }
