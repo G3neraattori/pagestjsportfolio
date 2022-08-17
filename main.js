@@ -9,8 +9,8 @@ import {MathUtils} from "three";
 import {func} from "three/examples/jsm/nodes/shadernode/ShaderNodeBaseElements.js";
 
 
-let CSSrenderer, camera, scene, renderer, raycaster;
-let laptop, cup, cssobject, notebook;
+let CSSrenderer, camera, scene, renderer, raycaster, controls;
+let laptop, cup, cssobject, notebook, layout;
 let mixer, action1;
 let clock = new THREE.Clock();
 let notemode = false;
@@ -45,7 +45,8 @@ function init() {
     renderer.setPixelRatio(devicePixelRatio * 1.5)
     //container.appendChild(renderer.domElement)
 
-    new OrbitControls(camera, CSSrenderer.domElement)
+    controls = new OrbitControls(camera, CSSrenderer.domElement)
+    controls.enabled = false;
     camera.position.set(340, 90, 760);
 
 
@@ -76,7 +77,7 @@ function init() {
     loadingManager.onProgress = function (url, loaded, total) {
         //progressBar.value = (loaded / total) * 100;
         progressBar.style.background = `conic-gradient(purple ${ (loaded / total) * 100 * 3.6}deg, rgba(1,1,1, 0.30) 4deg)`;
-        loadingBarText.textContent = (String)((loaded / total) * 100)+'%';
+        loadingBarText.textContent = (String)(((loaded / total)* 100).toFixed(0) )+'%';
         ////console.log(loaded)
 
     }
@@ -143,8 +144,8 @@ function init() {
         //cssobject.position.set(gltf.children[0].children[3].x, gltf.children[0].children[3].position.y, gltf.children[0].children[3].position.z);
         //cssobject.rotation.set(gltf.children[0].children[3].x, gltf.children[0].children[3].y, gltf.children[0].children[3].z);
     })
-    gltfLoader.load('/pagestjsportfolio/models/layout_table_shaded.glb', (gltfScene) => {
-        gltf = gltfScene.scene
+    gltfLoader.load('/pagestjsportfolio/models/layout_baked2.glb', (gltfScene) => {
+        layout = gltfScene.scene
         gltfScene.scene.scale.set(100, 100, 100)
         gltfScene.scene.traverse( function( node ) {
 
@@ -157,11 +158,12 @@ function init() {
         } );
         scene.add(gltfScene.scene)
         //console.log(gltf)
+        //console.log(gltf)
         //console.log(gltf.children[0].children[3])
         //cssobject.position.set(gltf.children[0].children[3].x, gltf.children[0].children[3].position.y, gltf.children[0].children[3].position.z);
         //cssobject.rotation.set(gltf.children[0].children[3].x, gltf.children[0].children[3].y, gltf.children[0].children[3].z);
     })
-    gltfLoader.load('/pagestjsportfolio/models/notebook3.glb', (gltfScene) => {
+    gltfLoader.load('/pagestjsportfolio/models/notebook4.glb', (gltfScene) => {
         notebook = gltfScene.scene
         scene.add(gltfScene.scene)
         gltfScene.scene.scale.set(2.5, 2.5, 2.5)
@@ -348,6 +350,7 @@ function onObjectClick() {
     raycaster.setFromCamera(mouse, camera)
     const intersects = raycaster.intersectObject(laptop, true)
     const intersectsNote = raycaster.intersectObject(notebook, true)
+    const intersectsPainting = raycaster.intersectObject(layout.children[21], true)
     if (intersects.length > 0) {
         gsap.to(camera.position, {
             x: 335.5,
@@ -375,7 +378,7 @@ function onObjectClick() {
             //295, 91, 750
             duration: 2.2,
             onUpdate: function (){
-                camera.lookAt(notebook.position.x-6, notebook.position.y, notebook.position.z);
+                camera.lookAt(notebook.position.x-6.5, notebook.position.y, notebook.position.z-2);
 
                 action1.timeScale = -1;
                 action1.paused = false;
@@ -388,6 +391,10 @@ function onObjectClick() {
                 camera.updateProjectionMatrix();
             }
         })
+
+    }else if (intersectsPainting.length > 0) {
+        controls.enabled = controls.enabled === false;
+        divClick();
 
     }/*else {
         gsap.to(camera.position, {
