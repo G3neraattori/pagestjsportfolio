@@ -124,6 +124,7 @@ function init() {
         gltfScene.scene.rotateY((Math.PI / 180) * 200)
 
         scene.add(gltfScene.scene)
+        //This is a mess. Requires normals etc to align it with screen vertices. Maybe fix later
         cssobject.position.set(laptop.position.x+5.5, 102.6, laptop.position.z+15)
         cssobject.rotation.set(laptop.rotation.x, laptop.rotation.y, laptop.rotation.z)
         cssobject.rotateX(-0.25)
@@ -187,7 +188,7 @@ function init() {
 
 
 
-
+    //Weird color inaccuracy problems. Unnoticeable if you haven't seen the original hdr though
     new RGBELoader(loadingManager).load('/pagestjsportfolio/models/lakeside_4k.hdr', function (texture) {
         texture.mapping = THREE.EquirectangularReflectionMapping;
         scene.background = texture;
@@ -238,6 +239,7 @@ function animate() {
     CSSrenderer.render(scene, camera)
     raycaster.setFromCamera(mouse, camera)
 
+    //FIXME: This will cause several errors on boot. Add error collection?
     const intersects = raycaster.intersectObject(laptop, true)
     const intersectsNote = raycaster.intersectObject(notebook, true)
 
@@ -267,7 +269,7 @@ function animate() {
     mixer.update(dt);
 
 }
-
+//Unused
 function moveCamera(){
     gsap.timeline()
         .to(camera.position, {
@@ -333,6 +335,7 @@ function moveCamera(){
 
      */
 }
+
 function moveCamera2(){
     gsap.timeline()
         .to(camera.position, {
@@ -348,6 +351,7 @@ function moveCamera2(){
 }
 function onObjectClick() {
     raycaster.setFromCamera(mouse, camera)
+    //FIXME?: Might cause errors on boot. Add catch clauses etc
     const intersects = raycaster.intersectObject(laptop, true)
     const intersectsNote = raycaster.intersectObject(notebook, true)
     const intersectsPainting = raycaster.intersectObject(layout.children[21], true)
@@ -369,7 +373,8 @@ function onObjectClick() {
                 camera.updateProjectionMatrix();
             }
         })
-
+    //FIXME: The camera is in the wrong position, snaps too aggressively, and is slightly wonky.
+        //Is a paint to setup though because the opening animation AND lookAt is dependant on the origin of the object.
     }else if (intersectsNote.length > 0) {
         gsap.to(camera.position, {
             x: notebook.position.x-2,
@@ -391,7 +396,7 @@ function onObjectClick() {
                 camera.updateProjectionMatrix();
             }
         })
-
+    //FIXME: Doesn't work on some Firefox versions
     }else if (intersectsPainting.length > 0) {
         controls.enabled = controls.enabled === false;
         divClick();
@@ -405,7 +410,6 @@ function onObjectClick() {
             duration: 1.2,
             onUpdate: function () {
                 camera.lookAt(cup.position);
-                //TODO error handling for this
                 scene.remove(cssobject)
             }
         })
@@ -414,6 +418,7 @@ function onObjectClick() {
 }
 
 function divClick() {
+    //TODO error handling for this
     gsap.to(camera.position, {
         x: 313,
         y: 116,
@@ -430,7 +435,7 @@ function divClick() {
             action1.paused = false;
 
             //330, 106, 770
-            //TODO error handling for this
+
 
             //340, 102.6, 776)
             //cssobject.rotateOnWorldAxis(new THREE.Vector3(cssobject.matrixWorld),0.25)
@@ -443,7 +448,7 @@ function divClick() {
 }
 function start(){
     const loading = document.getElementById('loading');
-
+    //FIXME?: Doesn't work without the if clause but doesn't work only with if stament? Why, it doesn't even seem to get called?
     if (loading.style.display === "none") {
 
         document.getElementById("desktop").style.display = "none";
@@ -459,6 +464,7 @@ function start(){
     animate()
 }
 
+//Replaced by reloading the page.
 function leave(){
     document.getElementById("desktop").style.display = "flex";
     document.getElementById('controls').style.display = "none";
@@ -469,8 +475,6 @@ function leave(){
 }
 
 function fixAspect(mult){
-
-
     if (camera.aspect > (16/9)) {
         camera.fov = 50*mult;
     } else {
